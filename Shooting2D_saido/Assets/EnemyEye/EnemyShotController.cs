@@ -40,6 +40,9 @@ public class EnemyShotController : MonoBehaviour
         if (c.tag == "Player")
         {
             GameDirector.kyori -= 500;        // ‹——£‚ğŒ¸‚ç‚·
+            
+            // §ŒÀŠÔ‚ğ‚P‚O•bŒ¸‚ç‚·
+            GameDirector.lastTime -= 10f;
             Destroy(gameObject);    // ©•ªi“G’ejíœ
         }
     }
