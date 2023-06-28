@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -8,12 +9,13 @@ public class EnemyControllerRen : MonoBehaviour
 {
     Transform player;
     public float yurayura;
-     
+    public GameObject dokkann;
 
     void Start()
     {
         yurayura = this.transform.position.y;
         player = GameObject.Find("Player").transform;
+        //dokkann = GameObject.Find("GameDirector").GetComponent<GameDirector>();
     }
 
 
