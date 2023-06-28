@@ -35,24 +35,52 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        // エネミータイプ２だけ縦移動（サインカーブ）追加
-        if(enemyType == 2)
+        //// エネミータイプ２だけ縦移動（サインカーブ）追加
+        if (enemyType == 2)
         {
             dir.y = Mathf.Sin(rad + Time.time * 5f);
+            // 敵の弾の生成
+            shotTime += Time.deltaTime;
+            if (shotTime > shotInterval)
+            {
+                shotTime = 0;
+                Instantiate(ShotPre, transform.position, transform.rotation);
+            }
+        }
+        if (enemyType == 3)
+        {
+            dir.y = Mathf.Sin(rad + Time.time * 8f);
+            // 敵の弾の生成
+            shotTime += Time.deltaTime;
+            if (shotTime > shotInterval)
+            {
+                shotTime = 0;
+                Instantiate(ShotPre, transform.position, transform.rotation);
+                Invoke("rennsya1", 0.1f);
+                Invoke("rennsya2", 0.2f);
+            }
         }
 
         // 移動処理
         transform.position += dir.normalized * speed * Time.deltaTime;
 
         // 敵の弾の生成
-        shotTime += Time.deltaTime;
-        if (shotTime > shotInterval)
-        {
-            shotTime = 0;
-            Instantiate(ShotPre, transform.position, transform.rotation);
-        }
+        //shotTime += Time.deltaTime;
+        //if (shotTime > shotInterval)
+        //{
+        //    shotTime = 0;
+        //    Instantiate(ShotPre, transform.position, transform.rotation);
+        //}
     }
 
+    void rennsya1()
+    {
+        Instantiate(ShotPre, transform.position, transform.rotation);
+    }
+    void rennsya2()
+    {
+        Instantiate(ShotPre, transform.position, transform.rotation);
+    }
     // 重なり判定処理
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -60,7 +88,7 @@ public class EnemyController : MonoBehaviour
         if (other.tag == "Player")
         {
             // 距離を減らす
-            gd.Kyori -= 1000;
+            GameDirector.kyori -= 1000;
 
             // 重なった相手が衝突爆発を生成
             Instantiate(ExploPre, transform.position, transform.rotation);
@@ -73,7 +101,7 @@ public class EnemyController : MonoBehaviour
         if (other.tag == "PlayerShot")
         {
             // 距離を増やす
-            gd.Kyori += 200;
+            GameDirector.kyori += 200;
 
             // 重なった相手が衝突爆発を生成
             Instantiate(ExploPre, transform.position, transform.rotation);
