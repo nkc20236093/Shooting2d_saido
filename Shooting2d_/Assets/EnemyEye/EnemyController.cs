@@ -22,7 +22,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, 6);		    // Žõ–½
-        enemyType = Random.Range(0, 3); // “G‚ÌŽí—Þ
+        enemyType = Random.Range(0, 4); // “G‚ÌŽí—Þ
         speed = 5;                      // ˆÚ“®‘¬“x
         dir = Vector3.left;             // ˆÚ“®•ûŒü
         rad = Time.time;                // ƒTƒCƒ“ƒJ[ƒu‚Ì“®‚«‚ð‚¸‚ç‚·—p
@@ -49,7 +49,7 @@ public class EnemyController : MonoBehaviour
         }
         if (enemyType == 3)
         {
-            dir.y = Mathf.Sin(rad + Time.time * 8f);
+            dir.y = Mathf.Sin(rad + Time.time * 5f);
             // “G‚Ì’e‚Ì¶¬
             shotTime += Time.deltaTime;
             if (shotTime > shotInterval)
@@ -73,11 +73,11 @@ public class EnemyController : MonoBehaviour
         //}
     }
 
-    void rennsya1()
+    public void rennsya1()
     {
         Instantiate(ShotPre, transform.position, transform.rotation);
     }
-    void rennsya2()
+    public void rennsya2()
     {
         Instantiate(ShotPre, transform.position, transform.rotation);
     }
