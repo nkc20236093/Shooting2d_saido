@@ -11,6 +11,9 @@ using UnityEngine.SceneManagement;
 
 public class GameDirector : MonoBehaviour
 {
+    public AudioClip BGM;
+    public AudioSource aud;
+
     public Text kyoriLabel; // 距離表示テキストオブジェクト保存
     public Text shotLabel;  // 弾の強さ表示テキストオブジェクト保存
     public Image timeGauge; // 残り時間ゲージ画像オブジェクト保存
