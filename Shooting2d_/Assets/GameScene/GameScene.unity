@@ -229,6 +229,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d79c20c966075428bfbeb7c76d09d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BGM: {fileID: 0}
+  aud: {fileID: 0}
   kyoriLabel: {fileID: 1521744762}
   shotLabel: {fileID: 341355621}
   timeGauge: {fileID: 139754443}

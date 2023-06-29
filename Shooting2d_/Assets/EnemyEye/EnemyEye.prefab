@@ -155,5 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7967e2507120a43871a541d0c507db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShotPre_2: {fileID: 5803746978276575530, guid: 69cc507de0218fb4db9bbf382a5ef8e6, type: 3}
   ExploPre: {fileID: 7426070780133827831, guid: 8a4d50020c5aa81479554fb00115ea7e, type: 3}
   ShotPre: {fileID: 6438448538233943114, guid: 143b9cd18d6c0ec43bbfd875826eb172, type: 3}

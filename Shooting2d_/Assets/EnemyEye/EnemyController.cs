@@ -9,6 +9,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public GameObject ShotPre_2;
     public GameObject ExploPre; // 爆発のプレハブを保存
     public GameObject ShotPre;  // 弾のプレハブを保存
     float speed;                // 移動速度を保存
@@ -21,8 +22,8 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        Destroy(gameObject, 6);		    // 寿命
-        enemyType = Random.Range(0, 4); // 敵の種類
+        Destroy(gameObject, 8);		    // 寿命
+        enemyType = Random.Range(0, 5); // 敵の種類
         speed = 5;                      // 移動速度
         dir = Vector3.left;             // 移動方向
         rad = Time.time;                // サインカーブの動きをずらす用
@@ -60,6 +61,19 @@ public class EnemyController : MonoBehaviour
                 Invoke("rennsya2", 0.2f);
             }
         }
+        if (enemyType == 4)
+        {
+            dir.y = Mathf.Sin(rad + Time.time * 5f);
+            // 敵の弾の生成
+            shotTime += Time.deltaTime;
+            if (shotTime > shotInterval)
+            {
+                shotTime = 0;
+                Instantiate(ShotPre_2, transform.position, transform.rotation);
+                Invoke("rennsya3", 0.1f);
+                Invoke("rennsya4", 0.2f);
+            }
+        }
 
         // 移動処理
         transform.position += dir.normalized * speed * Time.deltaTime;
@@ -80,6 +94,14 @@ public class EnemyController : MonoBehaviour
     public void rennsya2()
     {
         Instantiate(ShotPre, transform.position, transform.rotation);
+    }
+    public void rennsya3()
+    {
+        Instantiate(ShotPre_2, transform.position, transform.rotation);
+    }
+    public void rennsya4()
+    {
+        Instantiate(ShotPre_2, transform.position, transform.rotation);
     }
     // 重なり判定処理
     void OnTriggerEnter2D(Collider2D other)
